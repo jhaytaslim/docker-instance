@@ -11,7 +11,8 @@
     "mongo:start": "yarn mongo:image && yarn mongo:container",
     "mongo:image": "docker image build -t mongo-image -f mongo.Dockerfile .",
     "mongo:container": "docker container run -it --name mongo-container -p 27018:27017 mongo-image",
-    "rabbitmq:start": "yarn rabbitmq:image && yarn rabbitmq:container",
+    "rabbitmq:start": "docker-compose -f docker-compose.rabbitmq.yml up --build --remove-orphans",
+    "rabbitmq:start:dev": "yarn rabbitmq:image && yarn rabbitmq:container",
     "rabbitmq:image": "docker image build -t rabbitmq-image -f rabbitmq.Dockerfile .",
     "rabbitmq:container": "docker container run -it --name rabbitmq-container -p 5672:5672 rabbitmq-image"
   },
