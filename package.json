@@ -1,0 +1,20 @@
+{
+  "name": "docker",
+  "version": "1.0.0",
+  "description": "docker instances",
+  "main": "index.html",
+  "scripts": {
+    "mssql:start": "yarn mssql:image && yarn mssql:container",
+    "mssql:image": "docker image build -t mssql-image -f mssql.Dockerfile .",
+    "mssql:container": "docker container run -it --name mssql-container -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 mssql-image",
+    "mongo:startx": "docker run -d -p 27017:27017 --name test-mongo mongo:latest",
+    "mongo:start": "yarn mongo:image && yarn mongo:container",
+    "mongo:image": "docker image build -t mongo-image -f mongo.Dockerfile .",
+    "mongo:container": "docker container run -it --name mongo-container -p 27018:27017 mongo-image",
+    "rabbitmq:start": "yarn rabbitmq:image && yarn rabbitmq:container",
+    "rabbitmq:image": "docker image build -t rabbitmq-image -f rabbitmq.Dockerfile .",
+    "rabbitmq:container": "docker container run -it --name rabbitmq-container -p 5672:5672 rabbitmq-image"
+  },
+  "keywords": ["api", "template", "phony"],
+  "license": "ISC"
+}
