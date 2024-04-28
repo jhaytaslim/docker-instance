@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  postgresEngine:
+    container_name: postgresEngine
+    image: postgres:16.1-alpine
+    restart: always
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+      POSTGRES_PORT: 5432
+    ports:
+      - '5433:5432'
+    expose:
+      - 5433
+
+
+  # mssqlEngine:
+  #   container_name: mssqlEngine
+  #   image: 'mcr.microsoft.com/mssql/server'
+  #   ports:
+  #       - '1434:1433'
+  #   expose:
+  #     - 1433
+  #   environment:
+  #       - ACCEPT_EULA=Y
+  #       - SA_PASSWORD=p@ssw0rd
+    # volumes:
+    #     - './drive:/var/opt/mssql'
+
+    

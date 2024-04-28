@@ -1,17 +1,24 @@
 version: "3.8"
 
 services:
-  rabbitmq:
-    image: rabbitmq:3-management
-    container_name: rabbitmq
-    environment:
-      - RABBITMQ_DEFAULT_USER=myuser
-      - RABBITMQ_DEFAULT_PASS=mypassword
+  # rabbitmq:
+  #   image: rabbitmq:3-management
+  #   container_name: rabbitmq
+  #   environment:
+  #     - RABBITMQ_DEFAULT_USER=myuser
+  #     - RABBITMQ_DEFAULT_PASS=mypassword
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+  seq:
+    image: datalust/seq:latest
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - 8041:80
+      - 5341:5341
+    environment:
+      ACCEPT_EULA: Y
 
-networks:
-  default:
-    external:
-      name: local-net
+# networks:
+#   default:
+#     external:
+#       name: local-net
